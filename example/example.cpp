@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    encrypt((char*)"Hello world!", 10, (char*)"dgfyrhebsdhehdcf");
+    encrypt((char*)"Hello world!", 12, (char*)"dgfyrhebsdhehdcf");
     int ns = 0;
     char* res = getResult(&ns);
     std::string enc(res, ns);
