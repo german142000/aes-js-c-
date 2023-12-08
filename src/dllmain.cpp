@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "aes.h"
+#include "bdb_aes.h"
 
 #pragma warning(disable : 4996)
 
@@ -41,7 +41,7 @@ bool encrypt(char* plainText, int size, char* key) {
         string ptxt(ptx, size);
         free(ptx);
         string skey(key, 16);
-        string encc = path + "node.exe main.js -enc " + ptxt + " " + skey + " >> e.aes";
+        string encc = path + GetCurrentDirectory() + "\\node\\node.exe main.js -enc " + ptxt + " " + skey + " >> e.aes";
         system(encc.c_str());
         res = readFile("aes\\e.aes");
         string rfp = GetCurrentDirectory() + "\\aes\\e.aes";
@@ -59,7 +59,7 @@ bool decrypt(char* chiperText, int size, char* key) {
         string path = "cd " + GetCurrentDirectory() + "\\aes & ";
         string ptxt(chiperText, size);
         string skey(key, 16);
-        string encc = path + "node.exe main.js -dec " + ptxt + " " + skey + " >> d.aes";
+        string encc = path + GetCurrentDirectory() + "\\node\\node.exe main.js -dec " + ptxt + " " + skey + " >> d.aes";
         system(encc.c_str());
         res = readFile("aes\\d.aes");
         string rfp = GetCurrentDirectory() + "\\aes\\d.aes";
